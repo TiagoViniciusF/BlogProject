@@ -1,0 +1,54 @@
+.post-date{
+    background:#eeebeb;
+    padding:4px;
+    margin:3px 0;
+    display: block;
+}
+
+.post-thumb{
+    width: 100%;
+}
+
+.post-img-index{
+    width: 100%;
+}
+
+.well{
+    background:#eeebeb;
+    padding:20px;
+    margin:19px 0;
+}
+
+.thumb {
+    position: relative;
+    max-width: 1200px;
+    height: 450px;  
+    overflow: hidden;
+    border: 1px solid #000;
+  }
+  .thumb img {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    height: 100%;
+    width: 100%;
+     -webkit-transform: translate(-50%,-50%);
+        -ms-transform: translate(-50%,-50%);
+            transform: translate(-50%,-50%);   
+  }
+
+  /*header{
+    position: fixed;
+    width: 100%;
+    top:0;
+    left: 0;
+}
+
+.alert-success{
+    margin-top: 100px
+    
+}
+*/
+
+
+  
