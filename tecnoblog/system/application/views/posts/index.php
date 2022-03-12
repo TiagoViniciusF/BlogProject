@@ -1,19 +1,20 @@
 
-<h2><?php echo $post['title']; ?></h2>
-<small class="post-date">Postado em <?php $data= new DateTime($post['created_at']); ?>
-<?php echo $data->format('d/m/Y'); ?> às <?php echo $data->format('H:i'); ?> </small><br>
-<img class="post-img-index" src="<?php echo site_url(); ?>uploads/<?php echo $post['post_image']; ?>">
+<h2>{title}</h2>
+
+<small class="post-date">Postado em {created_at}  </small><br>
+<img class="post-img-index" src="{url}uploads/{post_image}">
 <div class="post-body">
     <br><br>
-    <?php echo $post['body']; ?>
+   {body}
+   
 </div>
 <?php if($this->session->userdata('user_id') == $post['user_id']) :?>
 <hr>
 <div>
-<?php echo form_open('posts/delete/'.$post['id']); ?>
-<a class="btn btn-primary" href="<?php echo base_url(); ?>posts/edit/<?php echo $post['slug']; 
-?>">Editar</a>
-<input type="submit" value="Apagar" class="btn btn-danger pull-left">
+
+<a class="btn btn-primary" href="{url}posts/edit/{slug}">Editar</a>
+<a class="btn btn-danger" href="{url}posts/delete/{id}">Apagar</a>
+
 </div>
 </form>
 <?php endif; ?>

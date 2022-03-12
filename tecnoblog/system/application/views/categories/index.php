@@ -1,15 +1,17 @@
 
-<h2>Categorias</h2>
+<h2>{categories_title}</h2>
 <ul class="list-group">
 
-    <?php foreach($categories as $category) : ?>
+   
+
+    
+    {repeticao}
       
+      <li class="list-group-item"><a href="{url}categories/posts/{id}">{name}
+     
+      </a> </li>
       
-        <li class="list-group-item"><a href="<?php echo site_url('/categories/posts/'.
-        $category['id']); ?>"><?php echo $category['name']; ?>
-       
-        </a> </li>
-        
-        <?php endforeach; ?>
+     {/repeticao}
+
 
 </ul>

@@ -18,9 +18,9 @@
   <div class="form-group">
     <label>Categoria:</label>
     <select name="category_id" class="form-control">
-      <?php foreach($categories as $category): ?>
-        <option value="<?php echo $category['id']; ?>"><?php echo $category['name']; ?></option>
-        <?php endforeach; ?>
+     {categories}
+        <option value="{id}">{name}</option>
+        {/categories}
     </select>
   </div>
   <div class="form-group">

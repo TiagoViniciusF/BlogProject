@@ -1,3 +1,3 @@
 
 <h2><?= $title ?></h2>
-<p>Tecnoblog versão 1.0 </p>
+<p>Tecnoblog versão 2.0 </p>

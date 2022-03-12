@@ -3,36 +3,68 @@
 class categories extends Controller {
 
     public function index(){
-       // $data['title'] = 'Categorias';
+        
+        $this->load->library('parser');
+       
+
+        $data = array(
+            'categories_title' => 'Categorias',
+            'url' => 'http://localhost/tecnoblog/',
+            'repeticao' => $this->category_model->get_categories()
+            
+             );
+         //$this->session->userdata('logged_in') ? true:false
+       
+        $this->parser->parse('templates/header',$data);
+        $this->parser->parse('categories/index', $data);
+        $this->parser->parse('templates/footer', $data);
+        
+        
+        
 
         
-        $data['categories'] = $this->category_model->get_categories();
+       // $data['categories'] = $this->category_model->get_categories();
 
-        $this->load->view('templates/header',$data);
-        $this->load->view('categories/index', $data);
-        $this->load->view('templates/footer');
+        //$this->load->view('templates/header',$data);
+        //$this->load->view('categories/index', $data);
+        //$this->load->view('templates/footer');
 
     }
 
+   
 
     public function create(){
         if(!$this->session->userdata('logged_in')){
             redirect('users/login');
          }
-        $data['title'] = 'Criando Categorias';
+
+        $this->load->library('parser');
+       
+        
 
         $this->form_validation->set_rules('name', 'Name', 'required');
 
        if($this->form_validation->run() === FALSE){
-            $data['categories'] = $this->category_model->get_categories();
 
-            $this->load->view('templates/header',$data);
-            $this->load->view('categories/create', $data);
-            $this->load->view('templates/footer');
+        $data = array(
+            'url' => 'http://localhost/tecnoblog/',
+            'create_categories' => 'Criando Categorias',
+            'validacao' => $validacao = validation_errors(),
+            //'categories' => $this->category_model->get_categories()
+        );
+
+            
+        
+        $this->parser->parse('templates/header',$data);
+        $this->parser->parse('categories/create', $data);
+        $this->parser->parse('templates/footer', $data);
+      
+
         }else{
+
             $this->category_model->create_category();
             $this->session->set_flashdata('category_created', 'Categoria criada com secesso');
-            redirect('categories');
+            redirect('posts');
         }
     }
 
@@ -48,14 +80,6 @@ class categories extends Controller {
         $this->load->view('templates/footer');
     }
 
-    public function delete($id){
-        //Check login
-      if(!$this->session->userdata('logged_in')){
-          redirect('users/login');
-       }
-    $this->category_model->delete_category($id);
-    $this->session->set_flashdata('category_deleted', 'Categoria apagada com sucesso');
-    redirect('posts');
-  }
+  
 
 }

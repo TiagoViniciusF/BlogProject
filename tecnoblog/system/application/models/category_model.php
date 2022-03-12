@@ -5,7 +5,7 @@ class category_model extends Model{
  
    }
 
-   public function get_categories(){
+    public function get_categories(){
     $this->db->order_by('name');
     $query = $this->db->get('categories');
     return $query->result_array();
@@ -24,9 +24,12 @@ class category_model extends Model{
        return $query->row();
    }
 
+
    public function delete_category($id){
     $this->db->where('id', $id);
     $this->db->delete('categories');
     return true;
 }
+
+   
 }
