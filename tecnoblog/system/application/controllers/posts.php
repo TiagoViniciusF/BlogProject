@@ -4,17 +4,21 @@ class posts extends Controller {
 
 
 
-    function blogposts(){
+    public function blogposts(){
         $this->load->library('parser');
 
-       
+        
         $data = array(
             'url' => 'http://localhost/tecnoblog/',
             'loop_categories' => $this->category_model->get_categories(),
             'loop_posts' =>  $this->post_model->get_posts(),
+            'posts' =>  $this->post_model->get_posts(),
+             
+            );
+
+      
             
 
-        );
         $this->parser->parse('templates/header',$data);
         $this->parser->parse('posts/blogposts', $data);
         $this->parser->parse('templates/footer', $data);
@@ -115,27 +119,31 @@ class posts extends Controller {
         if(!$this->session->userdata('logged_in')){
             redirect('users/login');
          }
-        $data['post'] = $this->post_model->get_posts($slug);
+  
+         $data = array(
+             'url' => 'http://localhost/tecnoblog/',
+             'loop_categories' => $this->category_model->get_categories(),
+             'post' =>  $this->post_model->get_posts($slug),
+         );
+         $data['title'] = $data['post']['title'];
+         $data['id'] = $data['post']['id'];
+         $data['body'] = $data['post']['body'];
+         $data['slug'] = $data['post']['slug'];
+
 
         //check user
         if($this->session->userdata('user_id')!= $this->post_model->
         get_posts($slug)['user_id']){
             redirect('posts');
-
         }
 
-        $data['categories'] = $this->post_model->get_categories();
-
-        if(empty($data['post'])){
+         if(empty($data['post'])){
             show_404();
         }
-        $data['title'] = 'Editando Post';
+        $this->parser->parse('templates/header',$data);
+        $this->parser->parse('posts/edit', $data);
+        $this->parser->parse('templates/footer', $data);
 
-        $data['categories'] = $this->category_model->get_categories();
-
-        $this->load->view('templates/header',$data);
-        $this->load->view('posts/edit', $data);
-        $this->load->view('templates/footer');
     }
 
     public function update(){
@@ -145,6 +153,20 @@ class posts extends Controller {
         $this->post_model->update_post();
         $this->session->set_flashdata('post_updated', 'Post atualizado com sucesso');
         redirect('posts');
+    }
+
+    public function about(){
+
+            
+
+        $data = array(
+            'url' => 'http://localhost/tecnoblog/',
+            'title' => 'Sobre'
+        );
+
+    $this->parser->parse('templates/header',$data);
+    $this->parser->parse('pages/about', $data);
+    $this->parser->parse('templates/footer', $data);
     }
     
 }

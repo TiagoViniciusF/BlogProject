@@ -9,7 +9,11 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="{url}assets/css/style.css">
     <script src="http://cdn.ckeditor.com/4.17.2/standard/ckeditor.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+
+
+
 </head>
 <body>
 <script id="dsq-count-scr" src="//tecnoblog1.disqus.com/count.js" async></script>
@@ -23,7 +27,7 @@
                 <ul class="navbar-nav me-auto mb-2 mb-md-0">
                    
                     <li class="nav-item">
-                        <a class="nav-link" href="{url}about">About</a>
+                        <a class="nav-link" href="{url}posts/about">About</a>
                     </li>
                    
                 </ul>

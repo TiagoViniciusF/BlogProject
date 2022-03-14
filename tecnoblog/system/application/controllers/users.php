@@ -1,7 +1,11 @@
 <?php
     class users extends Controller{
         public function register(){
-            $data['title'] = 'Increver-se';
+           
+            $data = array(
+                'url' => 'http://localhost/tecnoblog/',
+                'title' => 'Inscrever-se'
+            );
 
             $this->form_validation->set_rules('name', 'Name', 'required');
             $this->form_validation->set_rules('username', 'Username', 'required|callback_check_username_exists');
@@ -11,11 +15,12 @@
             'matches[password]');
 
             if($this->form_validation->run() === FALSE){
-                $data['categories'] = $this->category_model->get_categories();
+                
 
-                $this->load->view('templates/header',$data);
-                $this->load->view('users/register', $data);
-                $this->load->view('templates/footer');
+                $this->parser->parse('templates/header',$data);
+                $this->parser->parse('users/register', $data);
+                $this->parser->parse('templates/footer', $data);
+
 
             }else{
                 $enc_passord = md5($this->input->post('password'));
@@ -29,7 +34,15 @@
         }
         //login de usuario
         public function login(){
-            $data['title'] = 'Entrar';
+
+           
+
+            $data = array(
+                'title' => 'Entrar',
+                'url' => 'http://localhost/tecnoblog/',
+
+            );
+            
 
            
             $this->form_validation->set_rules('username', 'Username', 'required');
@@ -37,11 +50,11 @@
            
 
             if($this->form_validation->run() === FALSE){
-                $data['categories'] = $this->category_model->get_categories();
+                
 
-                $this->load->view('templates/header',$data);
-                $this->load->view('users/login', $data);
-                $this->load->view('templates/footer');
+                $this->parser->parse('templates/header',$data);
+                $this->parser->parse('users/login', $data);
+                $this->parser->parse('templates/footer', $data);
 
             }else{
 

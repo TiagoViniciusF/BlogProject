@@ -17,21 +17,25 @@
           </select>
       
       </div>
-      
+
+    
     {loop_posts}
-   
-    <br>
+  
     <h3>{title}</h3>
+    <br>
+    
     <div class="row" >
-    <div  class="col-md-3" >
+    <div  class="col-md-3" id="div" >
         <img class="post-thumb" src="{url}uploads/{post_image}">
         
     </div>
    
         <div class="col-md-9">
+            
+              
         <small class="post-date">Postado em {created_at} <strong>
             {name}</strong></small><br>
-            {body}<br>
+            <div class="textpost">{body}</div><br>
         <br>
         <p><a class="btn btn-secondary" href="{url}posts/{slug}">
     Leia Mais</a></p>

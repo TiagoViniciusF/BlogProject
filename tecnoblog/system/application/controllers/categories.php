@@ -69,15 +69,16 @@ class categories extends Controller {
     }
 
     public function posts($id){
-        $data['title'] = $this->category_model->get_category($id)->name;
-
-        $data['posts'] = $this->post_model->get_posts_by_category($id);
-
-        $data['categories'] = $this->category_model->get_categories();
-
-        $this->load->view('templates/header',$data);
-        $this->load->view('posts/blogposts', $data);
-        $this->load->view('templates/footer');
+       $data = array(
+            'url' => 'http://localhost/tecnoblog/',
+            'loop_categories' => $this->category_model->get_categories(),
+            'loop_posts' =>  $this->post_model->get_posts_by_category($id),
+            'title' => $this->category_model->get_category($id)->name
+            );
+            
+        $this->parser->parse('templates/header',$data);
+        $this->parser->parse('posts/blogpostsCategories', $data);
+        $this->parser->parse('templates/footer', $data);
     }
 
   

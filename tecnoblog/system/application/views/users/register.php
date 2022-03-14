@@ -4,7 +4,7 @@
 <?php echo form_open('users/register'); ?>
 <div class="row">
     <div class="col-md-4 offset-md-4">
-    <h1 class="text-center"><?= $title; ?></h1>
+    <h1 class="text-center">{title}</h1>
         <div class="form-group">
             <label>Nome:</label>
             <input type="text" class="form-control" name="name" placeholder="Nome">

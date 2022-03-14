@@ -39,11 +39,13 @@
 | routes must come before any wildcard or regular expression routes.
 |
 */
+
+
 $route['users/logout'] = 'users/logout';
 $route['users/login'] = 'users/login';
 $route['users/register'] = 'users/register';
 
-$route['comments/create/(:any)'] = 'comments/create/$1';
+
 
 $route['posts/upload_form'] = 'posts/create';
 $route['posts/edit/(:any)'] = 'posts/edit/$1';
@@ -52,6 +54,7 @@ $route['posts/create'] = 'posts/create';
 $route['posts/update'] = 'posts/update';
 $route['posts/(:any)'] = 'posts/index/$1';
 $route['posts'] = 'posts/blogposts';
+$route['posts/about'] = 'posts/about';
 
 $route['default_controller'] = "pages";
 
@@ -64,7 +67,9 @@ $route['categories/delete/(:any)'] = 'categories/delete/$1';
 
 
 
-$route['(:any)'] = 'pages/index/$1';
+
+
+
 $route['scaffolding_trigger'] = "";
 
 

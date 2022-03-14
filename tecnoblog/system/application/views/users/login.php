@@ -2,7 +2,7 @@
 <?php echo form_open('users/login'); ?>
 <div class="row">
     <div class="col-md-4 offset-md-4">
-        <h1><p class="text-center"><?php echo $title; ?></p></h1>
+        <h1><p class="text-center">{title}</p></h1>
         <div class="form-group">
             <input type="text" name="username" class="form-control" placeholder="Nome de Usuario"
             required autofocus>

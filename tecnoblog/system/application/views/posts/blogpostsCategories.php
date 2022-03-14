@@ -17,22 +17,18 @@
           </select>
       
       </div>
-
-    
+      <h3>{title}</h3>
     {loop_posts}
-  
     <h3>{title}</h3>
     <br>
     
     <div class="row" >
-    <div  class="col-md-3" id="div" >
+    <div  class="col-md-3" >
         <img class="post-thumb" src="{url}uploads/{post_image}">
         
     </div>
    
         <div class="col-md-9">
-            
-              
         <small class="post-date">Postado em {created_at} <strong>
             {name}</strong></small><br>
             <div class="textpost">{body}</div><br>
